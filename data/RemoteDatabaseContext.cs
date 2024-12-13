@@ -14,7 +14,7 @@ public class RemoteDatabaseContext: DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=123;Database=postgres");
+        optionsBuilder.UseNpgsql("Host=192.168.4.102;Port=5421;Username=user21;Password=ee16lojZ;Database=user21");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
