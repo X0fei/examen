@@ -14,12 +14,16 @@ public class PresenceService(IPresenceRepository repository, ITypeAttendanceRepo
 
     public IEnumerable<Presence> GetPresencesBetweenDateRange(DateOnly startDate, DateOnly endDate)
     {
-        throw new NotImplementedException();
+       return (IEnumerable<Presence>)repository.GetAllPresences()
+            .Where(p => p.Date >= startDate && p.Date <= endDate)
+            .ToList();
     }
 
     public IEnumerable<Presence> GetPresencesByGroup(int groupId)
     {
-        throw new NotImplementedException();
+        return (IEnumerable<Presence>)repository.GetAllPresences()
+            .Where(p => p.Student.Group.Id == groupId)
+            .ToList();
     }
 
     public bool UpdatePresence(TypeAttendanceUpdateRequest request)

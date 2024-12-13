@@ -19,6 +19,7 @@ namespace PresenceDesktop
             serviceCollection.AddCommonServices();
             var services = serviceCollection.BuildServiceProvider();
             var mainWindow = services.GetRequiredService<MainWindow>();
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = mainWindow;

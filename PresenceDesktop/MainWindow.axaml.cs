@@ -8,6 +8,7 @@ namespace PresenceDesktop
         private readonly IGroupUseCase _groupService;
         public MainWindow(IGroupUseCase groupUseCase)
         {
+            InitializeComponent();
             _groupService = groupUseCase;
         }
         public MainWindow()

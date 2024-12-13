@@ -14,7 +14,8 @@ namespace PresenceDesktop.DI
     {
         public static void AddCommonServices(this IServiceCollection collection)
         {
-            collection.AddDbContext<RemoteDatabaseContext>()
+            collection
+                .AddDbContext<RemoteDatabaseContext>()
                 .AddSingleton<IGroupRepository, GroupRepository>()
                 .AddTransient<IGroupUseCase, GroupService>()
                 .AddSingleton<IUserRepository, UserRepository>()
