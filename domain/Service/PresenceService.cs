@@ -9,8 +9,7 @@ public class PresenceService(IPresenceRepository repository, ITypeAttendanceRepo
 {
     public IEnumerable<Presence> GetPresences()
     {
-        throw new NotImplementedException();
-
+        return repository.GetAllPresences().Select(DaoToEntityMapper.PresenceDaoToPresence);
     }
 
     public IEnumerable<Presence> GetPresencesBetweenDateRange(DateOnly startDate, DateOnly endDate)
@@ -21,7 +20,6 @@ public class PresenceService(IPresenceRepository repository, ITypeAttendanceRepo
     public IEnumerable<Presence> GetPresencesByGroup(int groupId)
     {
         throw new NotImplementedException();
-
     }
 
     public bool UpdatePresence(TypeAttendanceUpdateRequest request)
@@ -37,7 +35,5 @@ public class PresenceService(IPresenceRepository repository, ITypeAttendanceRepo
         var attendanceDao = attendanceRepository.GetAttendanceTypes().First(it => it.Id == request.NewTypeAttendanceId);
         return repository.UpdatePresenceAttendance(presenceDao, attendanceDao);
     }
-
-  
 
 }

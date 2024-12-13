@@ -8,11 +8,11 @@ public class GroupRepository(RemoteDatabaseContext remoteDatabaseContext) : IGro
 {
     public IEnumerable<GroupDao> GetGroups()
     {
-        throw new NotImplementedException();
+        return remoteDatabaseContext.Groups.Include(students => students.Students).ToList();
     }
 
     public GroupDao? GetGroupById(int id)
     {
-        throw new NotImplementedException();
+        return remoteDatabaseContext.Groups.FirstOrDefault(group => group.Id == id);
     }
 }

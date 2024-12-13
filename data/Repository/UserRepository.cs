@@ -1,4 +1,8 @@
-﻿namespace data.Repository;
+﻿using System.Text.RegularExpressions;
+using data.DAO;
+using Microsoft.EntityFrameworkCore;
+
+namespace data.Repository;
 
 public class UserRepository(RemoteDatabaseContext remoteDatabaseContext) : IUserRepository
 {
@@ -12,6 +16,14 @@ public class UserRepository(RemoteDatabaseContext remoteDatabaseContext) : IUser
 
     public bool RemoveUsersByGroupId(int groupId)
     {
-        throw new NotImplementedException();
+        var usersToRemove = remoteDatabaseContext.Students
+            .Where(user => user.Group.Id == groupId)
+            .ToList();
+        if (usersToRemove.Any())
+        {
+            remoteDatabaseContext.Students.RemoveRange(usersToRemove);
+            remoteDatabaseContext.SaveChanges();
+        }
+        return remoteDatabaseContext.SaveChanges() > 0;
     }
 }

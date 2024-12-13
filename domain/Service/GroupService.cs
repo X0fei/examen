@@ -15,12 +15,15 @@ public class GroupService(IGroupRepository groupRepository, IUserRepository user
 
     public bool RemoveStudentsByGroupId(int groupId)
     {
-        throw new NotImplementedException();
+        var group = groupRepository.GetGroupById(groupId);
+        if (group == null) throw new Exception($"Group with id {groupId} not found");
+        return userRepository.RemoveUsersByGroupId(groupId);
     }
 
     public bool RemoveStudentById(Guid studentGuid)
     {
-        throw new NotImplementedException();
+        if (studentGuid == Guid.Empty) throw new ArgumentException($"Student with id {studentGuid} not found");
+        return userRepository.RemoveUserByGuid(studentGuid);
     }
 
     public IEnumerable<Group> GetGroups()

@@ -1,4 +1,5 @@
 ﻿using data.DAO;
+using Microsoft.EntityFrameworkCore;
 
 namespace data.Repository;
 
@@ -6,6 +7,6 @@ public class AttendanceTypeRepository(RemoteDatabaseContext remoteDatabaseContex
 {
     public IEnumerable<TypeAttendanceDao> GetAttendanceTypes()
     {
-        return remoteDatabaseContext.TypeAttendances;
+        return remoteDatabaseContext.TypeAttendances.ToList();
     }
 }
