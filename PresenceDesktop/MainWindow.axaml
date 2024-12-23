@@ -18,7 +18,7 @@
 		<ComboBox Name="SortComboBox"
 				  SelectedIndex="0"
 				  SelectionChanged="SortComboBox_SelectionChanged">
-			<ComboBoxItem></ComboBoxItem>
+			<ComboBoxItem>Без сортировки</ComboBoxItem>
 			<ComboBoxItem>По возрастанию</ComboBoxItem>
 			<ComboBoxItem>По убыванию</ComboBoxItem>
 		</ComboBox>
