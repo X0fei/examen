@@ -16,25 +16,35 @@
 			</ComboBox.ItemTemplate>
 		</ComboBox>
 		<ComboBox Name="SortComboBox"
-				  SelectedIndex="0"
-				  SelectionChanged="SortComboBox_SelectionChanged">
+				  SelectionChanged="SortComboBox_SelectionChanged"
+				  IsVisible="False">
 			<ComboBoxItem>Без сортировки</ComboBoxItem>
 			<ComboBoxItem>По возрастанию</ComboBoxItem>
 			<ComboBoxItem>По убыванию</ComboBoxItem>
 		</ComboBox>
 		<TextBlock Name="count"/>
-		<ListBox Name="StudentsListBox">
+		<ListBox Name="StudentsListBox"
+				 SelectionMode="Multiple,Toggle"
+				 SelectionChanged="StudentsListBox_SelectionChanged">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Text="{Binding Name}">
-						<ContextMenu>
-							<MenuItem Header="Удалить"
-									  Click="MenuItem_Click"
-									  Tag="{Binding Guid}"/>
-						</ContextMenu>
+					<TextBlock Name="StudentName"
+							   Text="{Binding Name}"
+							   Tag="{Binding Guid}">
+						<TextBlock.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Удалить"
+										  Click="MenuItem_Click"/>
+							</ContextMenu>
+						</TextBlock.ContextMenu>
 					</TextBlock>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
+		<Button Name="DeleteByGroupButton"
+				Click="DeleteByGroupButton_Click"
+				IsVisible="False">
+			Удалить студентов
+		</Button>
 	</StackPanel>
 </Window>
