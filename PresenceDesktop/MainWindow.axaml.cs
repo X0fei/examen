@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using domain.Entity;
 using data.DAO;
+using Microsoft.Extensions.DependencyInjection;
+using PresenceDesktop.DI;
 
 namespace PresenceDesktop
 {
@@ -82,6 +84,17 @@ namespace PresenceDesktop
                 var student = item as Student;
                 selectedItemsGuids.Add(student.Guid);
             }
+        }
+
+        private void ToPresenceButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddCommonServices();
+            var services = serviceCollection.BuildServiceProvider();
+            var presenceWindow = services.GetRequiredService<PresenceWindow>();
+            PresenceWindow newPresenceWindow = presenceWindow;
+            presenceWindow.Show();
+            Close();
         }
     }
 }

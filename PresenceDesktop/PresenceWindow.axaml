@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PresenceDesktop.PresenceWindow"
+		x:CompileBindings="False"
+        Title="PresenceWindow">
+	<StackPanel>
+		<Button Name="ToGroupsButton"
+				Click="ToGroupsButton_Click">
+			Группы
+		</Button>
+		<DataGrid Name="PresenceDataGrid"
+				  Margin="20" 
+				  AutoGenerateColumns="False"
+				  GridLinesVisibility="All"
+				  BorderThickness="1"
+				  BorderBrush="Gray">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Номер урока" Binding="{Binding LessonNumber}"/>
+				<DataGridTextColumn Header="ФИО студента" Binding="{Binding Student}"/>
+				<DataGridTextColumn Header="Тип посещаемости" Binding="{Binding TypeAttendance}"/>
+				<DataGridTextColumn Header="Предмет" Binding="{Binding Subject}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</StackPanel>
+</Window>

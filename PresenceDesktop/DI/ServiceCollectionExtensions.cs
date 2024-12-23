@@ -19,7 +19,11 @@ namespace PresenceDesktop.DI
                 .AddSingleton<IGroupRepository, GroupRepository>()
                 .AddTransient<IGroupUseCase, GroupService>()
                 .AddSingleton<IUserRepository, UserRepository>()
-                .AddTransient<MainWindow>();
+                .AddTransient<MainWindow>()
+                .AddSingleton<IPresenceRepository, PresenceRepository>()
+                .AddTransient<IPresenceUseCase, PresenceService>()
+                .AddSingleton<ITypeAttendanceRepository, AttendanceTypeRepository>()
+                .AddTransient<PresenceWindow>();
         }
     }
 }

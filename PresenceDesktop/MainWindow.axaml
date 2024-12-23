@@ -7,6 +7,10 @@
         x:Class="PresenceDesktop.MainWindow"
         Title="PresenceDesktop">
 	<StackPanel>
+		<Button Name="ToPresenceButton"
+				Click="ToPresenceButton_Click">
+			Расписание
+		</Button>
 		<ComboBox Name="GroupsComboBox"
 				  SelectionChanged="GroupsComboBox_SelectionChanged">
 			<ComboBox.ItemTemplate>
